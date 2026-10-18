@@ -1,0 +1,10 @@
+[img 0] nsdId=27 cos=+0.307 rank #767
+  GT  : A row of doughnuts being passed through a fryer.
+  TOP1: [+0.460] The interior decor in an average kitchen.
+[img 1] nsdId=189 cos=+0.379 rank #70
+  GT  : A husky dog has an orange frisbee in it's mouth.
+  TOP1: [+0.447] A dog stands in the grass next to a stuffed bear.
+[img 2] nsdId=214 cos=+0.545 rank #9
+  GT  : A black cat sits in a car and looks out.
+  TOP1: [+0.578] there is a cat that is looking out of the window
+selftest OK

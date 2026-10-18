@@ -1,0 +1,14 @@
+# 大体积数据与模型不入库（获取方式见 docs/DATA_STRUCTURE.md 与 README）
+data/
+models/
+visuo_llm/
+__pycache__/
+*.pyc
+
+# 大体积运行产出（可由脚本重新生成）
+outputs/
+*.npz.tmp
+results/*.parts/
+
+# 保留 results/ 下的小体积结果与日志摘要
+!results/

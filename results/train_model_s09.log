@@ -1,0 +1,22 @@
+sessions used: 9 -> 6750 trials
+voxels: 10000
+  session 01 loaded
+  session 02 loaded
+  session 03 loaded
+  session 04 loaded
+  session 05 loaded
+  session 06 loaded
+  session 07 loaded
+  session 08 loaded
+  session 09 loaded
+X (6750, 10000)  Y (6750, 768)  (163s)
+train trials 5433 | test trials 1317
+fold 1/3 Gram done (168s)
+fold 2/3 Gram done (171s)
+fold 3/3 Gram done (174s)
+  lambda=0.01   CV cosine=-0.0209
+  lambda=0.1    CV cosine=0.0563
+  lambda=1.0    CV cosine=0.1356
+best lambda 1.0 (CV cosine 0.1356)
+TEST cosine: mean 0.1829 median 0.1783
+saved model bundle -> D:\codex project\test\visuo_llm_repro\outputs\ridge_models\ridge_s09_v10000_20261019.npz

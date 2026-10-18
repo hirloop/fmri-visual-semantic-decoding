@@ -1,0 +1,52 @@
+loading model: D:\codex project\test\visuo_llm_repro\models\all-mpnet-base-v2
+D:\codex project\test\visuo_llm_repro\src\step1_embedding_lookup.py:83: FutureWarning: The `get_sentence_embedding_dimension` method has been renamed to `get_embedding_dimension`.
+  print("  -> embedding dim:", model.get_sentence_embedding_dimension())
+  -> embedding dim: 768
+dictionary: 25012 distractor captions + 5000 target captions = 30012 total
+queries: 1000 target embeddings (mean of per-image captions)
+target_cos=1.0   empirical_cos=1.000  hit@1=0.849  hit@5=0.968  mean_best_rank=0.5
+target_cos=0.95  empirical_cos=0.950  hit@1=0.846  hit@5=0.965  mean_best_rank=0.6
+target_cos=0.8   empirical_cos=0.800  hit@1=0.852  hit@5=0.960  mean_best_rank=0.6
+target_cos=0.6   empirical_cos=0.600  hit@1=0.824  hit@5=0.959  mean_best_rank=0.7
+--- qualitative examples (target_cos = 0.6, distractor-only dictionary) ---
+[query image 576994] true captions:
+   * A living room area with matching couches and a beige carpet.
+   * An open living room with beige  and brown furniture
+   * A den with couches, an ottoman and a chair.
+  retrieved top-3 from dictionary:
+   - A living room with a couch and coffee table.
+   - Living room area with couch and chairs and wooden table.
+   - A living room filled with furniture and pictures on it's walls.
+[query image 576996] true captions:
+   * cows walking across a tropical beach at dusk
+   * A herd of cows that are walking on the beach.
+   * A group of cows cross a big stream of water
+  retrieved top-3 from dictionary:
+   - Cows are sitting and walking on the shore of the beach.
+   - A herd of cows walking next to a calm stream.
+   - Several cows are walking in the water near the woods.
+[query image 577022] true captions:
+   * A man is walking and holding a surfboard on his head.
+   * A man in a white shirt holds his surfboard above his head.
+   * A man carrying his surfboard to the beach.
+  retrieved top-3 from dictionary:
+   - A man who is carrying a surfboard over his head.
+   - A man carrying a surfboard on top of a sandy beach.
+   - A man on a beach holding a surfboard.
+[query image 577024] true captions:
+   * A red city bus driving down a street.
+   * A bus is photographed driving down a street.
+   * Pictures of a bus driving down the street.
+  retrieved top-3 from dictionary:
+   - A bus that is driving down the road.
+   - a bus that is driving down a road
+   - A city bus going down a city street.
+[query image 577028] true captions:
+   * A cute cat laying on a rock in the woods.
+   * a cat laying on a rock beside a tree
+   * Adult cat sitting on a rock surrounded by branches.
+  retrieved top-3 from dictionary:
+   - a cat standing on some rocks next to some bushes
+   - An orange cat on rocks in leafy setting.
+   - a cat that is standing on some rocks next to some plants
+saved -> outputs/step1_results.npz
