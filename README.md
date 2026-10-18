@@ -20,12 +20,12 @@ fMRI 体素活动模式──▶ 岭回归──▶ 768 维 MPNet 句子嵌入�
 
 | 阶段 | 内容 | 备注 |
 |---|---|---|
-| 0. 文本侧先行 | MPNet 嵌入 + 字典查找微缩演示（噪声鲁棒性扫描） | 字典由 `src/step1_embedding_lookup.py` 生成：从 COCO train2017 描述中取 5,000 张图的 25,012 条干扰句 + 1,000 张查询图的 5,000 条目标句，经 all-mpnet-base-v2 嵌入（768 维、L2 归一化），缓存于 `outputs/embed_cache_5000_1000.npz`（97MB），交互程序读它查字典 |
-| 1. 数据准备 | NSD subj01 元数据 + betas 下载（并行断点续传） | S3 公开桶免账号；16 连接 Range 并行；当前 9/40 session |
-| 2. 目标矩阵 | 10,000 图 × 5 描述 → Y 矩阵（10,000×768） | 每图 5 条描述嵌入取平均（论文同款配方），0 缺失 |
-| 3. 解码训练 | streams ROI 体素 → 嵌入的岭回归（CV 选 λ） | 拟合：9 session（~5,900 trial）× R2 前 10,000 体素，3 折 CV 选出 λ=1.0（CV cosine 0.136），测试 cosine 0.183；模型文件 `outputs/ridge_models/ridge_s09_v10000_20261019.npz`（60MB，含权重/测试 beta/真值描述/溯源） |
-| 4. 交互演示 | 选图 → 载入 fMRI → 预测嵌入 → 查字典 → Top-5 文本 | `src/decode_app.py`，含原图展示；测试图片由 `src/fetch_test_images.py` 按需抽取 |
-| 5. 完整复刻 | 40 session 全量训练 + CC12M 大字典 + shared-515 测试集 | 论文量级约 27,000 trial；CC12M 字典文本已就位（1,027 万条），嵌入待算 |
+| 0. 文本侧先行 | MPNet 嵌入 + 字典查找微缩演示（噪声鲁棒性扫描） | 从 COCO train2017 描述中取 5,000 张图的 25,012 条干扰句 + 1,000 张查询图的 5,000 条目标句，经 all-mpnet-base-v2 嵌入（768 维、L2 归一化），缓存于 `outputs/embed_cache_5000_1000.npz`（97MB）|
+| 1. 数据准备 | NSD subj01 元数据 + betas 下载（并行断点续传） | |
+| 2. 目标矩阵 | 10,000 图 × 5 描述 → Y 矩阵（10,000×768） | 每图 5 条描述嵌入取平均 |
+| 3. 解码训练 | streams ROI 体素 → 嵌入的岭回归（CV 选 λ） | 9 session（~5,900 trial）× R2 前 10,000 体素，3 折 CV 选出 λ=1.0（CV cosine 0.136），测试 cosine 0.183；模型文件 `outputs/ridge_models/ridge_s09_v10000_20261019.npz`（60MB，含权重/测试 beta/真值描述/溯源） |
+| 4. 交互演示 | 选图 → 载入 fMRI → 预测嵌入 → 查字典 → Top-5 文本 | |
+| 5. 完整复刻 | 40 session 全量训练 + CC12M 大字典 + shared-515 测试集 |  |
 
 ## 阶段结果
 
